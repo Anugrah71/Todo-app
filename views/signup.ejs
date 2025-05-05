@@ -5,64 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="csrf-token" content="<%= csrfToken %>" />
     <title><%= title %></title>
-    <link rel="stylesheet" href="./css/stylee.css" />
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body>
-    <div class="grid grid-cols-6">
-      <div class="col-start-3 col-span-2">
-        <%- include('header.ejs') %>
-        <h6 class="py-4">Signup as a new user</h6>
-        <form action="/users" method="post">
-            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-          <div class="py-3">
-            <label for="firstName">First Name</label>
-            <input
-              type="text"
-              name="firstName"
-              class="border border-gray-300 text-sm rounded p-2 text-gray-900 w-full"
-              required
-            />
-          </div>
-          <div class="py-3">
-            <label for="lastName">Last Name</label>
-            <input
-              type="text"
-              name="lastName"
-             
-              class="border border-gray-300 text-sm rounded p-2 text-gray-900 w-full"
-              required
-            />
-          </div>
-          <div class="py-3">
-            <label for="email">Email</label>
-            <input
-              type="email"
-              name="email"
-              class="border border-gray-300 text-sm rounded p-2 text-gray-900 w-full"
-              required
+  <body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="w-full max-w-md bg-white shadow-lg rounded-lg p-8">
+      <%- include('header.ejs') %>
+      <h2 class="text-2xl font-semibold text-center mb-6 text-gray-700">Signup as a New User</h2>
 
-            />
-          </div>
-          <div class="py-3">
-            <label for="password">Password</label>
-            <input
-              type="password"
-              name="password"
-              class="border border-gray-300 text-sm rounded p-2 text-gray-900 w-full"
-              required
-            />
-          </div>
-          <div class="py-3">
-            <button
-              type="submit"
-              class="text-white bg-green-600 hover:bg-green-800 px-5 py-1.5 rounded font-medium mr-2 mb-2"
-            >
-              Sign up
-            </button>
-          </div>
-        </form>
-      </div>
+      <form action="/users" method="post" class="space-y-4">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+        <div>
+          <label for="firstName" class="block text-sm font-medium text-gray-700">First Name</label>
+          <input
+            type="text"
+            name="firstName"
+            class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-green-500 focus:border-green-500 text-gray-900"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="lastName" class="block text-sm font-medium text-gray-700">Last Name</label>
+          <input
+            type="text"
+            name="lastName"
+            class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-green-500 focus:border-green-500 text-gray-900"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+          <input
+            type="email"
+            name="email"
+            class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-green-500 focus:border-green-500 text-gray-900"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+          <input
+            type="password"
+            name="password"
+            class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-green-500 focus:border-green-500 text-gray-900"
+            required
+          />
+        </div>
+
+        <div>
+          <button
+            type="submit"
+            class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded shadow"
+          >
+            Sign up
+          </button>
+        </div>
+      </form>
     </div>
   </body>
 </html>
