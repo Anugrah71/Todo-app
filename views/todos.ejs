@@ -7,6 +7,18 @@
     <title>Todo Manager</title>
     <link rel="stylesheet" href="./css/stylee.css" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f9fafb;
+      }
+      .todo-container {
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        border-radius: 8px;
+        background-color: white;
+      }
+    </style>
     <script>
       var token = document
         .querySelector('meta[name="csrf-token"]')
@@ -26,7 +38,6 @@
               window.location.reload();
             }
           })
-
           .catch((err) => console.error(err));
       }
       function deleteTodo(id) {
@@ -44,72 +55,97 @@
               window.location.reload();
             }
           })
-
           .catch((err) => console.error(err));
       }
       async function markTodoAsUncompleted(todoId) {
-      try {
-        const response = await fetch(`/todos/${todoId}/markAsUncompleted`, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-          },body: JSON.stringify({
-            "_csrf": token,
-          }),
-        }).then((res) => {
-            if (res.ok) {
-              window.location.reload();
-            }
-          })
-      } catch (error) {
-        console.error('Error marking todo as uncompleted:', error);
+        try {
+          const response = await fetch(`/todos/${todoId}/markAsUncompleted`, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              "_csrf": token,
+            }),
+          }).then((res) => {
+              if (res.ok) {
+                window.location.reload();
+              }
+            })
+        } catch (error) {
+          console.error('Error marking todo as uncompleted:', error);
+        }
       }
-    }
-    function updateTodoStatus(todoId, isChecked) {
-      if (isChecked) {
-        updateTodo(todoId);
-      } else {
-        markTodoAsUncompleted(todoId);
+      function updateTodoStatus(todoId, isChecked) {
+        if (isChecked) {
+          updateTodo(todoId);
+        } else {
+          markTodoAsUncompleted(todoId);
+        }
       }
-    }
     </script>
   </head>
-  <body>
-    <div class="grid grid-cols-6">
-      <div class="col-start-3 col-span-2">
-        <%- include('header') %>
-        <a href="/signout" class="mt-4">signout</a>
-        <form action="/todos" method="post">
+  <body class="bg-gray-50">
+    <div class="container mx-auto px-4 py-8 max-w-3xl">
+      <header class="flex justify-between items-center mb-8">
+        <h1 class="text-3xl font-bold text-gray-800">My Todo-list</h1>
+        <a href="/signout" class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-4 py-2 rounded-md transition duration-200 text-sm font-medium">Sign Out</a>
+      </header>
+      
+      <div class="todo-container p-6 mb-8">
+        <form action="/todos" method="post" class="mb-6">
           <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
-          <div class="flex gap-2 py-4">
-            <div class="flex-auto">
+          <div class="flex gap-3">
+            <div class="flex-grow">
               <input
                 type="text"
                 name="title"
                 placeholder="What's Next?"
-                class="border border-gray-300 text-sm rounded p-2 text-gray-900 w-full"
+                class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 required
               />
             </div>
-            <div class="flex-auto">
+            <div class="w-40">
               <input
                 type="date"
                 name="dueDate"
-                class="border border-gray-300 text-sm rounded p-2 text-gray-900 w-full leading-4"
+                class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 required
               />
             </div>
-            <div class="flex-none">
+            <div>
               <button
                 type="submit"
-                class="bg-green-600 text-white px-5 py-1.5 rounded font-medium mr-2 mb-2"
+                class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-medium transition duration-200"
               >
                 Add
               </button>
             </div>
           </div>
         </form>
-        <div><%- include('todo.ejs') %></div>
+        
+        <div class="flex flex-wrap gap-6 mb-8">
+          <div class="bg-red-50 px-4 py-3 rounded-md border-l-4 border-red-500">
+            <p class="text-sm text-gray-500">Overdue</p>
+            <p class="text-xl font-semibold text-gray-800">0</p>
+          </div>
+          <div class="bg-yellow-50 px-4 py-3 rounded-md border-l-4 border-yellow-500">
+            <p class="text-sm text-gray-500">Due Today</p>
+            <p class="text-xl font-semibold text-gray-800">0</p>
+          </div>
+          <div class="bg-blue-50 px-4 py-3 rounded-md border-l-4 border-blue-500">
+            <p class="text-sm text-gray-500">Due Later</p>
+            <p class="text-xl font-semibold text-gray-800">0</p>
+          </div>
+          <div class="bg-green-50 px-4 py-3 rounded-md border-l-4 border-green-500">
+            <p class="text-sm text-gray-500">Completed Items</p>
+            <p class="text-xl font-semibold text-gray-800">0</p>
+          </div>
+        </div>
+        
+        <div class="todos-list">
+          <%- include('todo.ejs') %>
+        </div>
       </div>
     </div>
   </body>
