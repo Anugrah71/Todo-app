@@ -4,9 +4,6 @@
     "password": "Anugrah71",
     "database": "wd-todo-dev",
     "host": "127.0.0.1",
-    "password": "",
-    "database": "",
-    "host": "",
     "dialect": "postgres"
   },
   "test": {
@@ -14,9 +11,6 @@
     "password": "Anugrah71",
     "database": "wd-todo-test",
     "host": "127.0.0.1",
-    "password": "",
-    "database": "",
-    "host": ""
     "dialect": "postgres"
   },
   "production": {
