@@ -1,75 +1,69 @@
-Todo App
-A full-stack application for managing tasks with user authentication and session management. This app uses PostgreSQL as the database and follows the MVC architecture.
+# Todo Application
 
-🚀 Features
-User authentication with Passport.js.
-CSRF protection using csurf.
-Task management with CRUD operations.
-Flash messages for user feedback.
-Unit tests with Jest and Supertest.
-Linting and pre-commit hooks with ESLint and Husky.
+A full-stack task management application with user authentication, session persistence, and secure data handling.
 
-🚀 Demo
-Link:https://todo-app-ba6i.onrender.com
+---
 
-📦 Tech Stack
-Frontend: EJS (Embedded JavaScript Templates), Tailwind CSS.
-Backend: Node.js, Express.js.
-Database: PostgreSQL with Sequelize ORM.
+## Description
 
+This project is a robust Todo management system designed to help users organize their daily tasks. Users can create, view, complete, and delete tasks within their own private accounts, ensuring proper data isolation and security.
 
-⚙️ Installation
-Clone the Repository:
+---
 
-git clone https://github.com/yourusername/todo-app.git
-cd todo-app
+## Features
 
-Install Dependencies:
-Backend:
-npm install
+- **User Authentication** – Secure signup and login using Passport.js (Local Strategy)
+- **Password Hashing** – Passwords are securely stored using bcrypt
+- **Task Categorization** – Tasks are automatically grouped into:
+  - Overdue
+  - Due Today
+  - Due Later
+- **CSRF Protection** – Uses `csurf` middleware to prevent CSRF attacks
+- **Session Management** – Persistent login sessions using `express-session`
+- **Flash Messages** – Login and action feedback using `connect-flash`
 
-🛠 Scripts
-Start the Development Server:
+---
 
-npm start
+## Tech Stack
 
-This will start the server with nodemon for live reloading.
+- **Frontend:** EJS, Tailwind CSS  
+- **Backend:** Node.js, Express.js  
+- **Database:** PostgreSQL, Sequelize ORM  
+- **Authentication & Security:** Passport.js, bcrypt, csurf  
+- **Testing:** Jest, Supertest  
 
-Start the Production Server:
+---
 
-npm run start:prod
-
-Run Tests:
-
-npm test
-
-Pre-Test Setup:
-
-npm run pretest
-
-This will drop and recreate the test database.
-
-📂 Folder Structure
+## Folder Structure
 
 Todo-app/
-├── views/
-│   ├── login.ejs
-│   ├── header.ejs
-│   └── other EJS files...
-├── public/
-│   ├── css/
-│   │   └── stylee.css
-├── models/
-│   ├── index.js
-│   └── other Sequelize models...
-├── routes/
-│   └── routes.js (or similar)
-├── app.js (or server.js)
-├── package.json
-├── .env
-└── other files...
+├── models/ # Sequelize models (User, Todo)
+├── migrations/ # Database migrations
+├── public/ # Static files (CSS, JS)
+├── views/ # EJS templates
+├── tests/ # Unit & integration tests
+├── app.js # Express app configuration
+├── index.js # Server entry point
+└── package.json # Dependencies & scripts
 
-🛡️ Security
-Passwords are hashed using bcrypt.
-CSRF protection is implemented using csurf.
-Sessions are managed securely with express-session.
+---
+
+## Installation & Setup
+
+### Clone the repository
+```bash
+git clone https://github.com/yourusername/todo-app.git
+cd todo-app
+```
+### Install dependencies
+```bash
+npm install
+```
+## Environment Variables
+
+- Database configuration is defined in config/config.json
+- Session secret is configured inside app.js
+-Ensure PostgreSQL is running and credentials match your configuration
+
+
+
