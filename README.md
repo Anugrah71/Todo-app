@@ -61,9 +61,46 @@ npm install
 ```
 ## Environment Variables
 
-- Database configuration is defined in config/config.json
-- Session secret is configured inside app.js
+- Database configuration is defined in `config/config.json`
+- Session secret is configured inside `app.js`
 -Ensure PostgreSQL is running and credentials match your configuration
 
+## Run the Project
+### Development mode
+```bash
+npm start
+```
+### Production mode
+```bash
+npm run start:prod
+```
+### Running Tests
+```bash
+npm run pretest   # Reset test database
+npm test          # Run Jest tests
+```
+---
+## API Endpoint
+### Authentication
+- `GET /signup` – Render signup page
+- `POST /users` – Register a new user
+- `GET /login` – Render login page
+- `POST /session` – Authenticate user
+- `GET /signout` – Logout and destroy session
+### Todo Management
+- `GET /todos` – Fetch categorized todos
+- `POST /todos` – Create a new task
+- `PUT /todos/:id/markAsCompleted` – Mark task as completed
+- `DELETE /todos/:id` – Delete a task
+---
+
+## Screenshots / Demo
+- **Live Demo**: https://todo-app-ba6i.onrender.com
+---
+
+## Future Improvements
+- Role-based access control (RBAC)
+- Premium features with payment integration
+- Email notifications for overdue tasks
 
 
