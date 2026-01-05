@@ -96,6 +96,16 @@ npm test          # Run Jest tests
 
 ## Screenshots / Demo
 - **Live Demo**: https://todo-app-ba6i.onrender.com
+<p align="center">
+  <img src="screenshots/Todo1.png" width="45%" />
+  <img src="screenshots/Todo2.png" width="45%" />
+</p>
+
+<p align="center">
+  <img src="screenshots/Todo3.png" width="45%" />
+  <img src="screenshots/Todo5.png" width="45%" />
+</p>
+
 ---
 
 ## Future Improvements
