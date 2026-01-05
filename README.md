@@ -35,7 +35,7 @@ This project is a robust Todo management system designed to help users organize 
 ---
 
 ## Folder Structure
-
+```text
 Todo-app/
 ├── models/ # Sequelize models (User, Todo)
 ├── migrations/ # Database migrations
@@ -45,7 +45,7 @@ Todo-app/
 ├── app.js # Express app configuration
 ├── index.js # Server entry point
 └── package.json # Dependencies & scripts
-
+```
 ---
 
 ## Installation & Setup
